@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 const rooms = new Map();
 
-app.use(express.static("public"));
+app.use(express.static("."));
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
 function makeRoomCode() {
