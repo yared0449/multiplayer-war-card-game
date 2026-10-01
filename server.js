@@ -1,12 +1,12 @@
-import express from "express";
-import http from "http";
-import { WebSocketServer } from "ws";
-import crypto from "crypto";
-
 const app = express();
-const server = http.createServer(app);
-const wss = new WebSocketServer({ server });
-const rooms = new Map();
+ 
+app.get("/", (req, res) => {
+res.send("War Game Server Running");
+});
+ 
+app.use(express.static("."));
+ 
+app.get("/health", (_req, res) => res.json({ ok: true }));
 
 app.use(express.static("."));
 app.get("/health", (_req, res) => res.json({ ok: true }));
