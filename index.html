@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>War — Multiplayer Card Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section id="lobby" class="panel">
+      <h1>⚔️ WAR</h1>
+      <p class="subtitle">A real-time 2-player card battle</p>
+      <input id="name" maxlength="20" placeholder="Your name">
+      <div class="actions">
+        <button id="create">Create Game</button>
+        <button id="showJoin">Join Game</button>
+      </div>
+      <div id="joinBox" class="hidden">
+        <input id="code" maxlength="6" placeholder="Room code">
+        <button id="join">Join Room</button>
+      </div>
+      <details>
+        <summary>How to play</summary>
+        <p>Each round, players reveal one card. The higher card wins the round. Aces are high. First player to 10 points wins. If you tie, no point is awarded and the next round begins.</p>
+      </details>
+      <p id="message"></p>
+    </section>
+
+    <section id="game" class="hidden">
+      <header>
+        <div>
+          <h1>⚔️ WAR</h1>
+          <span id="roomLabel"></span>
+        </div>
+        <button id="copy">Copy Room Code</button>
+      </header>
+
+      <div class="scoreboard">
+        <div class="playerBox" id="p0">
+          <strong id="p0name">Player 1</strong>
+          <span><b id="p0score">0</b> points</span>
+        </div>
+        <div class="vs">VS</div>
+        <div class="playerBox" id="p1">
+          <strong id="p1name">Player 2</strong>
+          <span><b id="p1score">0</b> points</span>
+        </div>
+      </div>
+
+      <p id="turn" class="turn"></p>
+
+      <div class="table">
+        <div class="cardSlot"><div id="card0" class="card back">?</div></div>
+        <div class="cardSlot"><div id="card1" class="card back">?</div></div>
+      </div>
+
+      <div class="controls">
+        <button id="play">Flip My Card</button>
+        <button id="restart" class="hidden">Play Again</button>
+      </div>
+
+      <p id="gameMessage"></p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
