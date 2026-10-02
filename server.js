@@ -5,10 +5,6 @@ import crypto from "crypto";
  
 const app = express();
  
-app.get("/", (req, res) => {
-res.send("War Game Server Running");
-});
- 
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 const rooms = new Map();
