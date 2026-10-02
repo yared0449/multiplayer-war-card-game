@@ -1,21 +1,25 @@
+import express from "express";
+import http from "http";
+import { WebSocketServer } from "ws";
+import crypto from "crypto";
+ 
 const app = express();
  
 app.get("/", (req, res) => {
 res.send("War Game Server Running");
 });
  
-app.use(express.static("."));
+const server = http.createServer(app);
+const wss = new WebSocketServer({ server });
+const rooms = new Map();
  
-app.get("/health", (_req, res) => res.json({ ok: true }));
-
 app.use(express.static("."));
 app.get("/health", (_req, res) => res.json({ ok: true }));
-
-function makeRoomCode() {
-  let code;
-  do code = crypto.randomBytes(3).toString("hex").toUpperCase();
-  while (rooms.has(code));
-  return code;
+ function makeRoomCode() {
+let code;
+do code = crypto.randomBytes(3).toString("hex").toUpperCase();
+while (rooms.has(code));
+return code;
 }
 
 function deck() {
